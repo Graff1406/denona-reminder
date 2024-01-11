@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
+    "sourceMap": true,
+    "target": "es2022",
+    "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
