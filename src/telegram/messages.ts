@@ -34,7 +34,7 @@ export const handleUserText = () => {
           cron.schedule(
             pattern,
             () => {
-              bot.sendMessage(chatId, "Задание по расписанию выполнено!");
+              bot.sendMessage(chatId, textReminder);
             },
             { scheduled: true, timezone: timeZone }
           );
