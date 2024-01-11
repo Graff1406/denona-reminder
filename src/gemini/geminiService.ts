@@ -1,5 +1,5 @@
 import { genAI } from "./config";
-import { reminder, reminder2, reminder3 } from "../models/prompts";
+import { reminder2 } from "../models/prompts";
 import { GenerateChatTextOptions } from "../models/interfaces";
 
 export const generateChatText = async ({
