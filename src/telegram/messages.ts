@@ -4,9 +4,7 @@ import { Message } from "node-telegram-bot-api";
 import { bot } from "./config";
 import { generateChatText } from "../gemini/geminiService";
 import * as cron from "node-cron";
-import * as moment from "moment-timezone";
 
-const timeZone = moment.tz.guess();
 const chatStates: Record<number, string[]> = {};
 
 export const handleUserText = () => {
@@ -36,14 +34,10 @@ export const handleUserText = () => {
           // Send confirmation of time
           bot.sendMessage(chatId, text);
 
-          cron.schedule(
-            pattern,
-            () => {
-              bot.sendMessage(chatId, textReminder || text);
-              console.log("cron", { textReminder });
-            },
-            { timezone: timeZone }
-          );
+          cron.schedule(pattern, () => {
+            bot.sendMessage(chatId, textReminder || text);
+            console.log("cron", { textReminder });
+          });
         } else {
           // No schedule set
           bot.sendMessage(chatId, text);
