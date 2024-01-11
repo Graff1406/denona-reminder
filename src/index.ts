@@ -30,7 +30,7 @@ app.listen(PORT, () => {
 bot
   .setWebHook(
     isDev
-      ? `https://b2b0-185-6-123-157.ngrok-free.app/${path}`
+      ? `https://2127-200-55-245-141.ngrok-free.app/${path}`
       : `https://denona-reminder.onrender.com/${path}`
   )
   .catch((error) => {

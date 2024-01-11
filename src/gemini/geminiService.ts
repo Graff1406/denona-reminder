@@ -1,11 +1,11 @@
 import { genAI } from "./config";
-import { reminder } from "../models/prompts";
+import { reminder, reminder2 } from "../models/prompts";
 import { GenerateChatTextOptions } from "../models/interfaces";
 
 export const generateChatText = async ({
   context,
   prompt,
-  history = reminder,
+  history = reminder2,
   temperature = 0.9,
 }: GenerateChatTextOptions): Promise<string> => {
   const model = genAI.getGenerativeModel({

@@ -25,19 +25,28 @@ export const handleUserText = () => {
         chatStates[chatId] = [...context, userMessage];
         const { text, pattern, textReminder } = JSON.parse(data) as {
           text: string;
-          pattern: string;
-          textReminder: string;
+          pattern: string | null;
+          textReminder: string | null;
         };
-        bot.sendMessage(chatId, `${text}. ${pattern}. ${textReminder}`);
 
-        if (text && pattern)
+        console.log({ text, pattern, textReminder });
+
+        if (pattern) {
+          // Send confirmation of time
+          bot.sendMessage(chatId, text);
+
           cron.schedule(
             pattern,
             () => {
-              bot.sendMessage(chatId, textReminder);
+              bot.sendMessage(chatId, textReminder || text);
+              console.log("cron", { textReminder });
             },
-            { scheduled: true, timezone: timeZone }
+            { timezone: timeZone }
           );
+        } else {
+          // No schedule set
+          bot.sendMessage(chatId, text);
+        }
       }
     } catch (err) {
       console.error("Error handling user text:", err);
