@@ -23,13 +23,14 @@ export const handleUserText = () => {
         });
 
         chatStates[chatId] = [...context, userMessage];
+
         const { text, pattern, textReminder } = JSON.parse(data) as {
           text: string;
           pattern: string | null;
           textReminder: string | null;
         };
 
-        console.log({ text, pattern, textReminder });
+        chatStates[chatId] = [...context, text];
 
         if (pattern) {
           // Send confirmation of time
