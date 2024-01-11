@@ -8,6 +8,7 @@ import { handleUserText } from "./telegram/messages";
 const app = express();
 const PORT = process.env.PORT || 4000;
 const path = "denona-reminder-bot";
+const isDev = process.env.NODE_ENV === "development";
 
 app.use(express.json());
 
@@ -27,7 +28,11 @@ app.listen(PORT, () => {
 });
 
 bot
-  .setWebHook(`https://b2b0-185-6-123-157.ngrok-free.app/${path}`)
+  .setWebHook(
+    isDev
+      ? `https://b2b0-185-6-123-157.ngrok-free.app/${path}`
+      : `https://denona-reminder.onrender.com/${path}`
+  )
   .catch((error) => {
     console.error(error);
   });
