@@ -33,6 +33,6 @@ bot
       ? `https://c300-200-55-245-140.ngrok-free.app/${path}`
       : `https://denona-reminder.onrender.com/${path}`
   )
-  .catch((error) => {
+  .catch((error: Error) => {
     console.error(error);
   });
